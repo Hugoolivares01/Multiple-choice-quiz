@@ -31,5 +31,4 @@ main:nth-child(2) button {
     position: relative;
     display: flex;
     justify-content: center;
-    color: red;
 }
