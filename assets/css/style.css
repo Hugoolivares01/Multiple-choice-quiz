@@ -22,13 +22,9 @@ header div {
     display: flex;
     justify-content: center;
 }
-/* main:nth-child(2) button {
-    display: flex;
-    justify-content: center;
-    color: red;
-} */
 main:nth-child(2) button {
     position: relative;
     display: flex;
     justify-content: center;
+    color: blue;
 }
