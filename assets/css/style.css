@@ -1,0 +1,35 @@
+header {
+    display: flex;
+    width: 100%;
+    height: 10vh;
+}
+header h1 {
+    font-size: small;
+}
+header #Highscore {
+    width: 50%;
+}
+header div {
+    width: 50%;
+    display: flex;
+    justify-content: end;
+}
+.smallscreen h1 {
+    display: flex;
+    justify-content: center;
+}
+.smallscreen p {
+    display: flex;
+    justify-content: center;
+}
+/* main:nth-child(2) button {
+    display: flex;
+    justify-content: center;
+    color: red;
+} */
+main:nth-child(2) button {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    color: red;
+}
