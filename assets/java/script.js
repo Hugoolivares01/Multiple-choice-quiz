@@ -1,8 +1,21 @@
 var highscore = document.querySelector(".Highscore");
 var timerN = document.querySelector(".timernumbercount")
 var QuizSBtn = document.querySelector(".Quiz-start")
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("h");
+});
 
-QuizSBtn.addEventListener("click", countercountdown);
+QuizSBtn.addEventListener("click", function () {
+    countercountdown();
+    q1();
+    q2();
+    q3();
+    q4();
+    q5();
+    HS();
+    storeinfo();
+});
+
 function countercountdown() {
     let count = parseInt(timerN.textContent);
     const countdown = setInterval(() => {
@@ -15,38 +28,30 @@ function countercountdown() {
     }, 1000);
 }
 
-// function getinfo() {
+function q1() {
 
-// }
+}
 
-// quizstart.addEventListener("click", function () {
+function q2() {
 
-// });
+}
 
-// Question1.addEventListener("click", function () {
+function q3() {
 
-// });
+}
 
-// Question2.addEventListener("click", function () {
+function q4() {
 
-// });
+}
 
-// Question3.addEventListener("click", function () {
+function q5() {
 
-// });
+}
 
-// Question4.addEventListener("click", function () {
+function HS() {
 
-// });
+}
 
-// Question5.addEventListener("click", function () {
+function storeinfo() {
 
-// });
-
-// Enterfinalname.addEventListener("click", function () {
-
-// });
-
-// function saveinfo() {
-
-// }
+}
