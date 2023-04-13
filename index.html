@@ -11,7 +11,7 @@
 
 <body>
     <header>
-        <h1 id="Highscore">View Highscore</h1>
+        <a href="#" id="Highscore">View Highscore</a>
         <div>
             <h1>timer:</h1>
             <h1 class="timernumbercount"> 75 </h1>
@@ -21,11 +21,12 @@
     <main>
         <div class="smallscreen">
             <h1 id="T1"> Code Quiz Challenge </h1>
-            <div class="question">This is a quiz to test your knowledge. starting the quiz will move you to a question with 4 potential
+            <div class="question">This is a quiz to test your knowledge. starting the quiz will move you to a question
+                with 4 potential
                 answers.
                 There will be 5 questions you have to get threw within 75 seconds.
-                when you're ready click the button to start.</div>
-
+                when you're ready click the button to start.
+            </div>
             <div class="hidden">
                 <button id="a1">Answer</button>
                 <button id="a2">Answer</button>
@@ -33,13 +34,14 @@
                 <button id="a4">Answer</button>
             </div>
         </div>
-        <div>
-            <p id="InitialsPreText">Enter initials</p>
-            <textarea name="dad" id="Initialsname" cols="30" rows="1"></textarea> 
-            <button id="InitialNameSubmit"></button>
-            <button class="Quiz-start"> Quiz start </button>
+        <div class="QuizBtn">
+            <button class="Quiz-start"> Quiz Start </button>
         </div>
-
+        <div class="InitialsPage">
+            <p id="InitialsPreText">Enter initials:</p>
+            <textarea id="Initialsname" cols="30" rows=""></textarea>
+            <button id="InitialNameSubmit">Submit</button>
+        </div>
     </main>
 </body>
 
@@ -62,4 +64,3 @@ A= commas, curly brackets(C) , quotes, parentheses-->
 
 <!-- q5= A very useful tool used during development and debugging for printing content to debugger is:
 A= javascript, terminal/bash , for loops (C), console log -->
-

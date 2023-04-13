@@ -13,9 +13,9 @@ var InitialNameText = document.querySelector("#Initialsname");
 var InitialPreText = document.querySelector("#InitialsPreText");
 score = "";
 document.addEventListener("DOMContentLoaded", function () {
-    // InitialNameBtn.style.display = "none";
-    // InitialNameText.style.display = "none";
-    // InitialPreText.style.display = "none";
+    InitialNameBtn.style.display = "none";
+    InitialNameText.style.display = "none";
+    InitialPreText.style.display = "none";
 });
 
 QuizSBtn.addEventListener("click", function () {
@@ -40,10 +40,10 @@ function countercountdown() {
 
 function q1() {
     question.textContent = "What's the condition in an if/else statement enclosed with?";
-    a1.textContent = "String";
-    a2.textContent = "Boolean";
-    a3.textContent = "Alert";
-    a4.textContent = "Numbers";
+    a1.textContent = "1.String";
+    a2.textContent = "2.Boolean";
+    a3.textContent = "3.Alert";
+    a4.textContent = "4.Numbers";
     a1.addEventListener("click", function () {
         q2();
     })
@@ -64,10 +64,10 @@ function q1() {
 
 function q2() {
     question.textContent = ("the condition in and if / else staement is enclosed with ___?")
-    a1.textContent = ("quotes")
-    a2.textContent = ("curly brackets")
-    a3.textContent = ("parentheses")
-    a4.textContent = ("square brackets")
+    a1.textContent = ("1.quotes")
+    a2.textContent = ("2.curly brackets")
+    a3.textContent = ("3.parentheses")
+    a4.textContent = ("4.square brackets")
     a1.addEventListener("click", function () {
         q3();
     })
@@ -84,10 +84,10 @@ function q2() {
 
 function q3() {
     question.textContent = ("Arrays in Javascript can be used to store ?")
-    a1.textContent = ("number and strings")
-    a2.textContent = ("booleans")
-    a3.textContent = ("other arrays")
-    a4.textContent = ("all of the above")
+    a1.textContent = ("1.number and strings")
+    a2.textContent = ("2.booleans")
+    a3.textContent = ("3.other arrays")
+    a4.textContent = ("4.all of the above")
     a1.addEventListener("click", function () {
         q4();
     })
@@ -109,10 +109,10 @@ function q3() {
 
 function q4() {
     question.textContent = ("string values must be enclosed within ___ when being assigned to a varibles?")
-    a1.textContent = ("commas")
-    a2.textContent = ("curly brackets")
-    a3.textContent = ("quotes")
-    a4.textContent = ("parentheses")
+    a1.textContent = ("1.commas")
+    a2.textContent = ("2.curly brackets")
+    a3.textContent = ("3.quotes")
+    a4.textContent = ("4.parentheses")
     a1.addEventListener("click", function () {
         q5();
     })
@@ -132,10 +132,10 @@ function q4() {
 
 function q5() {
     question.textContent = (" A very useful tool used during development and debugging for printing content to debugger is:")
-    a1.textContent = ("javascript")
-    a2.textContent = ("terminal/bash")
-    a3.textContent = ("for loop")
-    a4.textContent = ("console log")
+    a1.textContent = ("1.javascript")
+    a2.textContent = ("2.terminal/bash")
+    a3.textContent = ("3.for loop")
+    a4.textContent = ("4.console log")
     a1.addEventListener("click", function () {
         storeinfo();
         HSNameInput();
@@ -160,10 +160,14 @@ function q5() {
 function HSNameInput() {
     Title.textContent = ("All Done!")
     question.textContent = ("Your final score is") + ("Place holder score")
-    a1.style.display = "none"
-    a2.style.display = "none"
-    a3.style.display = "none"
-    a4.style.display = "none"
+    a1.style.display = "none";
+    a2.style.display = "none";
+    a3.style.display = "none";
+    a4.style.display = "none";
+    InitialNameBtn.style.display = "";
+    InitialNameText.style.display = "";
+    InitialPreText.style.display = "";
+
 
     // All done 
     //Your final score is
