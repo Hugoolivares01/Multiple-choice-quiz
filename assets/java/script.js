@@ -11,6 +11,7 @@ var Title = document.querySelector("#T1");
 var InitialNameBtn = document.querySelector("#InitialNameSubmit");
 var InitialNameText = document.querySelector("#Initialsname");
 var InitialPreText = document.querySelector("#InitialsPreText");
+var Finalscore = 20;
 score = "";
 document.addEventListener("DOMContentLoaded", function () {
     InitialNameBtn.style.display = "none";
@@ -159,7 +160,7 @@ function q5() {
 
 function HSNameInput() {
     Title.textContent = ("All Done!")
-    question.textContent = ("Your final score is") + ("Place holder score")
+    question.textContent = ("Your final score is  ") + Finalscore + (".");
     a1.style.display = "none";
     a2.style.display = "none";
     a3.style.display = "none";
