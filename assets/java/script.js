@@ -11,12 +11,21 @@ var Title = document.querySelector("#T1");
 var InitialNameBtn = document.querySelector("#InitialNameSubmit");
 var InitialNameText = document.querySelector("#Initialsname");
 var InitialPreText = document.querySelector("#InitialsPreText");
-var Finalscore = 20;
-score = "";
+var Back = document.querySelector("#Back");
+var Clear = document.querySelector("#Clear");
+let score = 0;
+let InitialsArr = [];
+let ScoreArr = [];
 document.addEventListener("DOMContentLoaded", function () {
     InitialNameBtn.style.display = "none";
     InitialNameText.style.display = "none";
     InitialPreText.style.display = "none";
+    Back.style.display = "none";
+    Clear.style.display = "none";
+    let initials = localStorage.getItem("initials");
+    let score = localStorage.getItem("score");
+    console.log(initials);
+    console.log(score)
 });
 
 QuizSBtn.addEventListener("click", function () {
@@ -46,121 +55,141 @@ function q1() {
     a3.textContent = "3.Alert";
     a4.textContent = "4.Numbers";
     a1.addEventListener("click", function () {
-        q2();
+        score--;
+        q2(score);
     })
-
     a2.addEventListener("click", function () {
-        q2();
+        score++;
+        q2(score);
     })
 
     a3.addEventListener("click", function () {
-        q2();
+        score--;
+        q2(score);
     })
 
     a4.addEventListener("click", function () {
-        q2();
+        score--;
+        q2(score);
     })
 }
 
 
-function q2() {
+function q2(score) {
     question.textContent = ("the condition in and if / else staement is enclosed with ___?")
     a1.textContent = ("1.quotes")
     a2.textContent = ("2.curly brackets")
     a3.textContent = ("3.parentheses")
     a4.textContent = ("4.square brackets")
     a1.addEventListener("click", function () {
-        q3();
+        score--;
+        q3(score);
     })
     a2.addEventListener("click", function () {
-        q3();
+        score--;
+        q3(score);
     })
     a3.addEventListener("click", function () {
-        q3();
+        score++;
+        q3(score);
     })
     a4.addEventListener("click", function () {
-        q3();
+        score--;
+        q3(score);
     })
 }
 
-function q3() {
+function q3(score) {
     question.textContent = ("Arrays in Javascript can be used to store ?")
     a1.textContent = ("1.number and strings")
     a2.textContent = ("2.booleans")
     a3.textContent = ("3.other arrays")
     a4.textContent = ("4.all of the above")
     a1.addEventListener("click", function () {
-        q4();
+        score--;
+        q4(score);
     })
 
     a2.addEventListener("click", function () {
-        q4();
+        score--;
+        q4(score);
     })
 
     a3.addEventListener("click", function () {
-        q4();
+        score--;
+        q4(score);
     })
 
     a4.addEventListener("click", function () {
-        q4();
+        score++;
+        q4(score);
     })
 }
 
 
 
-function q4() {
+function q4(score) {
     question.textContent = ("string values must be enclosed within ___ when being assigned to a varibles?")
     a1.textContent = ("1.commas")
     a2.textContent = ("2.curly brackets")
     a3.textContent = ("3.quotes")
     a4.textContent = ("4.parentheses")
     a1.addEventListener("click", function () {
-        q5();
+        score--;
+        q5(score);
     })
 
     a2.addEventListener("click", function () {
-        q5();
+        score++;
+        q5(score);
     })
 
     a3.addEventListener("click", function () {
-        q5();
+        score--;
+        q5(score);
     })
 
     a4.addEventListener("click", function () {
-        q5();
+        score--;
+        q5(score);
     })
 }
 
-function q5() {
+function q5(score) {
     question.textContent = (" A very useful tool used during development and debugging for printing content to debugger is:")
     a1.textContent = ("1.javascript")
     a2.textContent = ("2.terminal/bash")
     a3.textContent = ("3.for loop")
     a4.textContent = ("4.console log")
     a1.addEventListener("click", function () {
-        storeinfo();
-        HSNameInput();
+        score--;
+        storeinfo(score);
+        HSNameInput(score);
     })
 
     a2.addEventListener("click", function () {
-        storeinfo();
-        HSNameInput();
+        score--;
+        storeinfo(score);
+        HSNameInput(score);
     })
 
     a3.addEventListener("click", function () {
-        storeinfo();
-        HSNameInput();
+        score++;
+        storeinfo(score);
+        HSNameInput(score);
     })
 
     a4.addEventListener("click", function () {
-        storeinfo();
-        HSNameInput();
+        score--;
+        storeinfo(score);
+        HSNameInput(score);
     })
 }
 
-function HSNameInput() {
+
+function HSNameInput(score) {
     Title.textContent = ("All Done!")
-    question.textContent = ("Your final score is  ") + Finalscore + (".");
+    question.textContent = ("Your final score is  ") + score + (".");
     a1.style.display = "none";
     a2.style.display = "none";
     a3.style.display = "none";
@@ -168,21 +197,37 @@ function HSNameInput() {
     InitialNameBtn.style.display = "";
     InitialNameText.style.display = "";
     InitialPreText.style.display = "";
-
-
-    // All done 
-    //Your final score is
-    // enter initials () btn
-
+    
+    InitialNameBtn.addEventListener("click", function () {
+    var initials = InitialNameText.value;
+    InitialsArr.push(initials);
+    ScoreArr.push(score);
+    localStorage.setItem("score", JSON.stringify(ScoreArr));
+    localStorage.setItem("initials", JSON.stringify(InitialsArr));
+    FinalHSPage();
+    displayHighScores();
+});
 }
-function FinalHSPage(){
+
+function displayHighScores() {
+    let initials = localStorage.getItem("initials");
+    let score = localStorage.getItem("score");
+    console.log(initials);
+    console.log(score)
+}
+function FinalHSPage(score) {
     // Highscore
     // list of names 
-    // (goback btn) (Clear Score)
-
+    Title.textContent = ("Highscore");
+    Back.style.display = "";
+    Clear.style.display = "";
+    question.style.display = "none";
+    InitialNameBtn.style.display = "none";
+    InitialNameText.style.display = "none";
+    InitialPreText.style.display = "none";
 }
 
-function storeinfo() {
+function storeinfo(score) {
 
 }
 

@@ -108,3 +108,10 @@ button:hover {
     display: flex;
     align-items: center;
 }
+.BackClear {
+    display: flex;
+    justify-content: center;
+}
+#Back {
+    margin-right: .5%;
+}
