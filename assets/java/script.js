@@ -1,4 +1,5 @@
-var highscore = document.querySelector(".Highscore");
+var highscore = document.querySelector("#Highscore");
+var timerT = document.querySelector(".timertext");
 var timerN = document.querySelector(".timernumbercount");
 var QuizSBtn = document.querySelector(".Quiz-start");
 var hidden = document.querySelector(".hidden");
@@ -22,10 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
     InitialPreText.style.display = "none";
     Back.style.display = "none";
     Clear.style.display = "none";
-    let initials = localStorage.getItem("initials");
-    let score = localStorage.getItem("score");
-    console.log(initials);
-    console.log(score)
 });
 
 QuizSBtn.addEventListener("click", function () {
@@ -190,6 +187,8 @@ function q5(score) {
 function HSNameInput(score) {
     Title.textContent = ("All Done!")
     question.textContent = ("Your final score is  ") + score + (".");
+    timerT.style.display = "none";
+    timerN.style.display = "none";
     a1.style.display = "none";
     a2.style.display = "none";
     a3.style.display = "none";
@@ -197,16 +196,16 @@ function HSNameInput(score) {
     InitialNameBtn.style.display = "";
     InitialNameText.style.display = "";
     InitialPreText.style.display = "";
-    
+
     InitialNameBtn.addEventListener("click", function () {
-    var initials = InitialNameText.value;
-    InitialsArr.push(initials);
-    ScoreArr.push(score);
-    localStorage.setItem("score", JSON.stringify(ScoreArr));
-    localStorage.setItem("initials", JSON.stringify(InitialsArr));
-    FinalHSPage();
-    displayHighScores();
-});
+        var initials = InitialNameText.value;
+        InitialsArr.push(initials);
+        ScoreArr.push(score);
+        localStorage.setItem("score", JSON.stringify(ScoreArr));
+        localStorage.setItem("initials", JSON.stringify(InitialsArr));
+        FinalHSPage();
+        displayHighScores();
+    });
 }
 
 function displayHighScores() {
@@ -216,8 +215,13 @@ function displayHighScores() {
     console.log(score)
 }
 function FinalHSPage(score) {
-    // Highscore
-    // list of names 
+    timerT.style.display = "none";
+    timerN.style.display = "none";
+    QuizSBtn.style.display = "none";
+    a1.style.display = "none";
+    a2.style.display = "none";
+    a3.style.display = "none";
+    a4.style.display = "none";
     Title.textContent = ("Highscore");
     Back.style.display = "";
     Clear.style.display = "";
@@ -226,10 +230,14 @@ function FinalHSPage(score) {
     InitialNameText.style.display = "none";
     InitialPreText.style.display = "none";
 }
-
-function storeinfo(score) {
+function storeinfo() {
 
 }
+highscore.addEventListener("click", function () {
+    FinalHSPage();
+});
+
+
 
 // <!-- q1= commonly used data types do not include?
 // A= string, boolean(C) , alert, numbers -->
