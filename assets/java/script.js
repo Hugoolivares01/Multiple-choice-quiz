@@ -9,20 +9,27 @@ var a2 = document.querySelector("#a2");
 var a3 = document.querySelector("#a3");
 var a4 = document.querySelector("#a4");
 var Title = document.querySelector("#T1");
+var InitalsPage = document.querySelector(".InitialsPage");
 var InitialNameBtn = document.querySelector("#InitialNameSubmit");
 var InitialNameText = document.querySelector("#Initialsname");
 var InitialPreText = document.querySelector("#InitialsPreText");
 var Back = document.querySelector("#Back");
 var Clear = document.querySelector("#Clear");
 let score = 0;
-let InitialsArr = [];
-let ScoreArr = [];
+var InitialsArr = [];
+var ScoreArr = [];    
 document.addEventListener("DOMContentLoaded", function () {
     InitialNameBtn.style.display = "none";
     InitialNameText.style.display = "none";
     InitialPreText.style.display = "none";
     Back.style.display = "none";
     Clear.style.display = "none";
+    var storedinitials = JSON.parse(localStorage.getItem("initials"));
+    var storedscore = JSON.parse(localStorage.getItem("score"));
+    InitialsArr = storedinitials;
+    ScoreArr = storedscore;
+    console.log(InitialsArr);
+    console.log(ScoreArr);
 });
 
 QuizSBtn.addEventListener("click", function () {
@@ -160,25 +167,21 @@ function q5(score) {
     a4.textContent = ("4.console log")
     a1.addEventListener("click", function () {
         score--;
-        storeinfo(score);
         HSNameInput(score);
     })
 
     a2.addEventListener("click", function () {
         score--;
-        storeinfo(score);
         HSNameInput(score);
     })
 
     a3.addEventListener("click", function () {
         score++;
-        storeinfo(score);
         HSNameInput(score);
     })
 
     a4.addEventListener("click", function () {
         score--;
-        storeinfo(score);
         HSNameInput(score);
     })
 }
@@ -203,18 +206,14 @@ function HSNameInput(score) {
         ScoreArr.push(score);
         localStorage.setItem("score", JSON.stringify(ScoreArr));
         localStorage.setItem("initials", JSON.stringify(InitialsArr));
+
         FinalHSPage();
         displayHighScores();
     });
 }
 
-function displayHighScores() {
-    let initials = localStorage.getItem("initials");
-    let score = localStorage.getItem("score");
-    console.log(initials);
-    console.log(score)
-}
-function FinalHSPage(score) {
+
+function FinalHSPage() {
     timerT.style.display = "none";
     timerN.style.display = "none";
     QuizSBtn.style.display = "none";
@@ -230,8 +229,17 @@ function FinalHSPage(score) {
     InitialNameText.style.display = "none";
     InitialPreText.style.display = "none";
 }
-function storeinfo() {
-
+function displayHighScores() {
+    for (let i = 0; i < 6 ; i++) {
+        const score = ScoreArr[i]; 
+       console.log(score);
+        let Scoreli = document.createElement("ol");
+        Scoreli.textContent = `${InitialsArr[i]} ${ScoreArr[i]}`;
+        InitalsPage.appendChild(Scoreli);
+        Scoreli.style.backgroundColor = "purple";
+        Scoreli.style.display = "inline-block";
+        
+    }
 }
 highscore.addEventListener("click", function () {
     FinalHSPage();
