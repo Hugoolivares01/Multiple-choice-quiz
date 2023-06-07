@@ -11,7 +11,10 @@
 
 <body>
     <header>
+        <!-- link for scores -->
         <a href="#" id="Highscore">View Highscore</a>
+
+        <!-- timer -->
         <div>
             <h1 class="timertext">timer:</h1>
             <h1 class="timernumbercount"> 75 </h1>
@@ -20,6 +23,7 @@
     </header>
     <main>
         <div class="smallscreen">
+            <!-- Question/Head Text -->
             <h1 id="T1"> Code Quiz Challenge </h1>
             <div class="question">This is a quiz to test your knowledge. starting the quiz will move you to a question
                 with 4 potential
@@ -27,21 +31,28 @@
                 There will be 5 questions you have to get threw within 75 seconds.
                 when you're ready click the button to start.
             </div>
+
+            <!-- placeholders for answers-->
             <div class="hidden">
-                <button id="a1">Answer</button>
-                <button id="a2">Answer</button>
-                <button id="a3">Answer</button>
-                <button id="a4">Answer</button>
+                <button id="a1"></button>
+                <button id="a2"></button>
+                <button id="a3"></button>
+                <button id="a4"></button>
             </div>
         </div>
+        <!-- Start button -->
         <div class="QuizBtn">
             <button class="Quiz-start"> Quiz Start </button>
         </div>
+
+        <!-- invisible page for scores -->
         <div class="InitialsPage">
             <p id="InitialsPreText">Enter initials:</p>
             <textarea id="Initialsname" cols="30" rows=""></textarea>
             <button id="InitialNameSubmit">Submit</button>
         </div>
+
+        <!-- Clear Previous scores and reloads page -->
         <div class="BackClear">
             <button id="Back"> Go back </button>
             <button id="Clear"> Clear Highscore</button>

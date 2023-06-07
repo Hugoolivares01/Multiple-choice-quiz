@@ -13,11 +13,20 @@ var InitalsPage = document.querySelector(".InitialsPage");
 var InitialNameBtn = document.querySelector("#InitialNameSubmit");
 var InitialNameText = document.querySelector("#Initialsname");
 var InitialPreText = document.querySelector("#InitialsPreText");
+var BackClear = document.querySelector(".BackClear");
 var Back = document.querySelector("#Back");
 var Clear = document.querySelector("#Clear");
 let score = 0;
 var InitialsArr = [];
-var ScoreArr = [];    
+var ScoreArr = [];
+// all varible listed 
+
+
+
+
+
+// on document load hides any visible text/buttons from later pages
+// then grabs and stores all local name and scores into varibles 
 document.addEventListener("DOMContentLoaded", function () {
     InitialNameBtn.style.display = "none";
     InitialNameText.style.display = "none";
@@ -32,25 +41,32 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(ScoreArr);
 });
 
-QuizSBtn.addEventListener("click", function () {
-    countercountdown();
-    q1();
-});
 
+
+
+// function for the imer to count down to 0 if it goes too 0 it grabs 
+// current score and runs the hs function
 function countercountdown() {
     let count = parseInt(timerN.textContent);
     const countdown = setInterval(() => {
         count--;
         if (count < 0) {
             clearInterval(countdown);
+            HSNameInput(score);
         } else {
             timerN.textContent = count;
         }
     }, 1000);
     QuizSBtn.style.display = "none";
     hidden.style.display = "inline";
-
 }
+
+
+
+
+// from question 1-5 are just rewording of questions and answers while adding or subtracting from 
+// the score that is passed along starting with 0 
+// exception of 5 also calls the hs function
 
 function q1() {
     question.textContent = "What's the condition in an if/else statement enclosed with?";
@@ -187,6 +203,12 @@ function q5(score) {
 }
 
 
+
+
+
+
+//  hides all uneeded questions text, removes none style from initals input and related text
+// also displays score gained 
 function HSNameInput(score) {
     Title.textContent = ("All Done!")
     question.textContent = ("Your final score is  ") + score + (".");
@@ -200,8 +222,11 @@ function HSNameInput(score) {
     InitialNameText.style.display = "";
     InitialPreText.style.display = "";
 
+    //  storing the gained initials text and score to local storage 
     InitialNameBtn.addEventListener("click", function () {
         var initials = InitialNameText.value;
+        InitialsArr = InitialsArr || [];
+        ScoreArr = ScoreArr || [];
         InitialsArr.push(initials);
         ScoreArr.push(score);
         localStorage.setItem("score", JSON.stringify(ScoreArr));
@@ -212,7 +237,7 @@ function HSNameInput(score) {
     });
 }
 
-
+// hides all uneeded questions text if the link is clicked then  displays hidden buttons and changes title content
 function FinalHSPage() {
     timerT.style.display = "none";
     timerN.style.display = "none";
@@ -229,22 +254,53 @@ function FinalHSPage() {
     InitialNameText.style.display = "none";
     InitialPreText.style.display = "none";
 }
+
+// sorts score array by top 5 scores then grabs the value of the score and the name thats in the mirroring array 
+// and appends them to the page with some styles
 function displayHighScores() {
-    for (let i = 0; i < 6 ; i++) {
-        const score = ScoreArr[i]; 
-       console.log(score);
+    const scoreC = ScoreArr.sort(function(a, b) {return b - a;  }).slice(0, 5);
+    const ArrayLength = scoreC.length;
+    for (let i = 0; i < ArrayLength; i++) {
+        InitalsPage.style.display = 'inline';
+        BackClear.style.marginTop = '5vh';
+        const score = ScoreArr[i];
+        console.log(score);
         let Scoreli = document.createElement("ol");
         Scoreli.textContent = `${InitialsArr[i]} ${ScoreArr[i]}`;
         InitalsPage.appendChild(Scoreli);
-        Scoreli.style.backgroundColor = "purple";
-        Scoreli.style.display = "inline-block";
-        
+
     }
+    
 }
+
+
+//add event listeners for each button 
 highscore.addEventListener("click", function () {
     FinalHSPage();
+    displayHighScores();
 });
 
+Clear.addEventListener("click", function() {
+    InitalsPage.innerHTML = "";
+    localStorage.clear();
+
+});
+
+
+Back.addEventListener("click", function() {
+    location.reload();
+});
+
+
+QuizSBtn.addEventListener("click", function () {
+    countercountdown();
+    q1();
+});
+
+
+
+
+// answers if needed
 
 
 // <!-- q1= commonly used data types do not include?
